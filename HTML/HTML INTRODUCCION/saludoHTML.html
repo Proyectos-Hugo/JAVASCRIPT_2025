@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Empiezo</title>
+    </head>
+    <body>
+        <h1>ESTA ES MI PRIMERA PÁGINA (Mentira)</h1>
+        <br>
+        <p>
+            Vamos a aprender <b>Javascript</b>
+            <br>
+            <button onclick="saludarBoton()" id="saludo">Pulsar aquí</button>
+        </p>
+
+        <script>
+            function saludarBoton() {
+                alert("BIENVENIDO A JAVASCRIPT");
+                document.getElementById("saludo").innerHTML = "BIENVENIDO A JAVASCRIPT";
+            }
+        </script>
+    </body>
+</html>

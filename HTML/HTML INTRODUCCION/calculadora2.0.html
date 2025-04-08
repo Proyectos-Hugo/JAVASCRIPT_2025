@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora 2.0</title>
+    </head>
+    <body>
+        Introducir un numero: <input type="number" id="n1"><br>
+        Introducir otro numero: <input type="number" id="n2"><br>
+        <button onclick="suma()">Sumar</button><button onclick="multiplicar()">Multiplicar</button>
+        <div id="resultado"></div>
+
+        <script>
+            function suma(){
+                let n1= document.getElementById("n1");
+                let n2= document.getElementById("n2");
+                let suma;
+
+                suma = parseInt(n1.value) + parseInt(n2.value);
+
+                document.getElementById("resultado").innerHTML=("La suma es: "+suma);
+            }
+
+            function multiplicar(){
+                let n1= document.getElementById("n1");
+                let n2= document.getElementById("n2");
+                let multi;
+
+                multi = parseInt(n1.value) * parseInt(n2.value);
+                document.getElementById("resultado").innerHTML = ("La multiplicacion es: "+multi);
+            }
+        </script>
+    </body>
+</html>

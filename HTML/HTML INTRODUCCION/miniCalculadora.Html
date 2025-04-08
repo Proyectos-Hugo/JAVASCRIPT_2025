@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora</title>
+    </head>
+    <body>
+        <button onclick="suma()">Sumar</button><button onclick="multiplicar()">Multiplicar</button><button onclick="numFactorial()">Factorial</button>
+        <script>
+            function suma() {
+                let a = prompt("Introduce el primer numero: ");
+                let b = prompt("Introduce el segundo numero: ");
+                let c =(parseInt(a)+parseInt(b));
+                alert ("El resultado de la suma es: " +c);
+            }
+
+            function multiplicar() {
+                let a = prompt("Introduce el primer numero: ");
+                let b = prompt("Introduce el segundo numero: ");
+                let v = (a * b);
+                alert("El resultado de la suma es: " +v);
+            }
+            function numFactorial(){
+                let n= parseInt(prompt("Introduce un numero: "));
+                let resultado=1;
+                for(let i=1; i <= n ; i++){
+                    resultado = resultado*i;
+                }
+                alert("El numero factorial de " +n+ " es: " +resultado);
+            }
+        </script>
+    </body>
+</html>

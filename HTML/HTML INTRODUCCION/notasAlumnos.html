@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                background-color: aqua; /* Esto sirve para meter color de fondo de la pagina*/
+            }
+            button{
+                margin: 5px; /* Aqui metemos el margen de cada caja a su alrededor */
+            }
+            .personal{
+                color: blue;
+                font-size: 25px;
+                font-style: italic;
+            }
+            input{ /* Esto es en caso de haber un input */
+                flex: 1;
+                padding: 12px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 8px; 
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="totalAprobado()">Aprobados</button>
+        <button onclick="calcularMedia()">Calcular Media</button>
+        <button onclick="notaAlta()">Nota Alta</button>
+        <button onclick="notaBaja()">Nota Baja</button>
+        <br>
+        <button onclick="nuevaNota()">Nueva nota</button>
+
+        <script>
+            let notas= [2,3,4,7,1,9,1,4,3,6,9,4,2,4,5,10];
+            function totalAprobado(){
+                let totalAprobado=0;
+                for(let i = 0; i<=notas.length;i++){
+                    if(notas[i]>=5){
+                        totalAprobado = totalAprobado+1;
+                    }
+                }
+                alert("El numero de aprobados es: "+totalAprobado);
+            }
+
+            function calcularMedia(){
+                let total=0;
+                let resultado=0;
+                for(let n of notas){
+                    total=total +n;
+                }
+                resultado = total / notas.length;
+                alert("La media es: "+resultado);
+            }
+
+            function notaAlta(){
+                let alta=0;
+                for(let n of notas){
+                    if(n>alta){
+                        alta =n;
+                    }
+                }
+                alert("La nota alta es: "+alta);
+            }
+
+            function notaBaja(){
+                let baja=10000;
+                for(let n of notas){
+                    if(n<baja){
+                        baja =n;
+                    }
+                }
+                alert("La nota alta es: "+baja);
+            }
+
+            function nuevaNota(){
+                let nota = parseInt(prompt("Introduce una nueva nota: "));
+                if(nota <=10 && nota >=0){
+                    notas.push(nota);
+                    for(let n of notas){
+                        alert(n);
+                    }
+                }else{
+                    alert("NO INTRODUCIDA");
+                }
+            }
+        </script>
+    </body>
+</html>
