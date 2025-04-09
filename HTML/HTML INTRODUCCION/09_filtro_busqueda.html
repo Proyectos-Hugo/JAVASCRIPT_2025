@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Filtro Busqueda</title>
+    </head>
+    <body>
+        Tématica: 
+        <input type="text" id="tematica" placeholder="Escribe la temática">
+        <br><br>
+        <button onclick="filtrar()">Filtrar</button>
+        <br><br>
+        <div id="resultado"></div>
+
+        <script>
+            let datos = [
+                    "deporte|www.clubrubenuria.com",
+                    "ciencia|www.abc/ciencia.com",
+                    "deporte|www.as.com",
+                    "libros|www.casadellibro.com",
+                    "cocina|www.masterchef.com",
+                    "ciencia|www.nasa.com",
+            ];
+
+            function filtrar(){
+                let direcciones=[];
+                let tematica = document.getElementById("tematica").value;
+                
+                for(let item of datos){
+                    let trozos=item.split("|");
+                    if(trozos[0] == tematica){
+                        //si la tematica coincide con el valor del input
+                        //se añade a la lista de direcciones
+                        direcciones.push(trozos[1]);
+                        console.log(direcciones);
+                    }
+                }
+
+                for(let i=0; i<direcciones.length; i++){
+                    //se añade el resultado al div resultado
+                    document.getElementById("resultado").innerHTML += `<h1>${direcciones[i]}</h1>`;
+                }
+            }
+        </script>
+    </body>
+</html>
