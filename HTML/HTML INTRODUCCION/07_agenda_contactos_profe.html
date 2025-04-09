@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        img{
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    Introduce nombre:<input type="text" id="nombre"><button onclick="guardar();">Guardar</button>
+    <br><br>
+    <button onclick="mostrar();">Mostrar</button>
+    <div id="listaNombres">
+
+    </div>
+
+    <script>
+        //array donde guardamos los nombres
+        let nombres=[];
+        function guardar(){
+            //impedir que los nombres se repitan
+            let n=document.getElementById("nombre").value;
+            let repetido=false;
+            //recorremos el array y si encontramos un nombre igual al de la varaible n
+            //ponemos la variable repetido al valor true
+            for(let nombre of nombres){
+                if(nombre==n){
+                    repetido=true;
+                }
+            }
+            if(repetido==false){
+                nombres.push(n);
+                alert("Contacto guardado");
+            }else{
+                alert("No añadido, el contacto ya existe!!!");
+            }
+            //limpiar la caja de texto
+            document.getElementById("nombre").value="";
+        }
+        function mostrar(){
+            let html="";
+            /*
+            for(let n of nombres){
+                html=html+"<b>"+n+"</b><a onclick='borrar();'><img src='papelera.png' height='20px' width='20px'></a><br>";
+            }*/
+            for(let i=0;i<nombres.length;i++){
+                //html=html+"<b>"+nombres[i]+"</b><a onclick='borrar("+i+");'><img src='papelera.png' height='20px' width='20px'></a><br>";
+                html=html+`<b>${nombres[i]}</b><a onclick='borrar(${i});'><img src='../../IMG/papelera.jpg' height='20px' width='20px'></a><br>`;
+            }
+            document.getElementById("listaNombres").innerHTML=html;
+        }
+        function borrar(pos){
+            //borra el nombre que está en la posición pos
+            nombres.splice(pos,1);
+            mostrar();
+        }
+    </script>
+</body>
+</html>

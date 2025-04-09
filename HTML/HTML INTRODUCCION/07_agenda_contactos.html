@@ -58,6 +58,10 @@
                 font-size: 18px;
                 color: #333;
             }
+            img{
+                margin-left: 10px;
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
@@ -69,6 +73,7 @@
             <br>
             <button onclick="guardarNombre()">Guardar</button>
             <button onclick="mostrarNombre()">Mostrar Nombre</button>
+            <button onclick="borrarNombre()">Borrar Nombre <img src="../../IMG/papelera.jpg" width="15" height="20" onclick="borrarNombre()"> </button> 
             <div id="result"></div>
             
         </div>
@@ -96,10 +101,29 @@
             function mostrarNombre(){
                 let html = " ";
                 for (let n of contactos) {
-                    html +="<b>"+n + "</b><img src='../../IMG/papelera.jpg' width='20' height='20'><br>";
+                    html +="<b>"+n + "</b><a onclick='borrar()'><img src='../../IMG/papelera.jpg' width='15' height='20'  onclick='borrarNombre()'></a><br>";
                 }
                 document.getElementById("result").innerHTML = html;
             }
+
+
+             function borrarNombre(){
+
+                 alert("Borrar nombre de la lista de contactos en la barra de arriba.");
+                 let n = document.getElementById("nombre").value;
+                 for (let i = 0; i < contactos.length; i++) {
+                     if (contactos[i] == n) {
+                         contactos.splice(i, 1);
+                         alert("Nombre borrado: " + n);
+                         document.getElementById("nombre").value = "";
+                         mostrarNombre();
+                         return;
+                     }
+                 }
+                 alert("El nombre no existe en la lista de contactos.");
+                 document.getElementById("nombre").value = "";
+             }
+
         </script>
     </body>
 </html>
