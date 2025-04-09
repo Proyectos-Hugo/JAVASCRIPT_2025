@@ -18,22 +18,24 @@
 
         <script>
             let n = 0;
+            let bool = true
             function contar() {
                 let limite = document.getElementById("contador").value;
-                if( n < limite){
+                if(bool == true){
                     n++;
                     document.getElementById("valor").innerHTML =`<h1> ${n} </h1>`;
                     console.log(n);
-                }else if(n == limite){
+                    if(n == limite){
+                        bool=false
+                    }
+                }else if(bool == false){
                     n--;
                     document.getElementById("valor").innerHTML =`<h1> ${n} </h1>`;
                     console.log(n);
-                }else if(n == 0){
-                    n++;
-                    document.getElementById("valor").innerHTML =`<h1> ${n} </h1>`;
-                    console.log(n);
+                    if(n == 0){
+                        bool=true
+                    }
                 }
-                
             }
         </script>
     </body>
