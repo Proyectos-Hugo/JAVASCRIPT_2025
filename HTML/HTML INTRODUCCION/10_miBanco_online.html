@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Banco</title>
+        <style>
+            input{
+                margin-left: 100px;
+                margin-right: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="number" id="saldo" placeholder="saldo inicial"> <button onclick="grabar()">Grabar</button><br><br>
+        ____________________________________________________________
+        <br><br>
+        <button onclick="ingresar()">Ingresar</button><br><br>
+        <input type="number" id="ingreso" placeholder="ingreso">
+        <br><br>
+        <button onclick="retirar()">Retirar</button><br><br>
+        <br><br>
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        <br><br>
+        <div id="resultado">
+
+        </div>
+
+        <script>
+            let saldo = 0;
+            let historial = [];
+            function grabar(){
+                let saldo_ini = document.getElementById("saldo").value;
+                saldo = parseInt(saldo_ini);
+            }
+
+            function ingresar(){
+                let ingreso = document.getElementById("ingreso").value;
+                let ingreso_num = parseInt(ingreso);
+                saldo += ingreso_num;
+                historial.push("Ingreso: " + ingreso_num);
+                document.getElementById("resultado").innerHTML = historial+ "<br>";
+            }
+
+            function retirar(){
+                let retirar = document.getElementById("ingreso").value;
+                let retirar_num = parseInt(retirar);
+                if (retirar_num <= saldo) {
+                    saldo -= retirar_num;
+                    historial.push("Retiro: " + retirar_num);
+                    document.getElementById("resultado").innerHTML = historial + "<br>";
+                } else {
+                    alert("No hay suficiente saldo para retirar esa cantidad.");
+                }
+            }
+        </script>
+    </body>
+</html>

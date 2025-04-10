@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nombre: <input type="text" id="nombre" placeholder="Nombre"><br><br>
+    Curso: <input type="text" id="curso" placeholder="Curso"><br><br>
+    Nota: <input type="number" id="nota" placeholder="Nota"><br><br>
+    <button onclick="guardar()">Guardar</button><button onclick="visualizar()">Ver datos</button>
+    <div id="visualizar"></div>
+
+    <script>
+        let arrayAlumnos = [];
+        function guardar(){
+            let nombre = document.getElementById("nombre").value;
+            let curso = document.getElementById("curso").value;
+            let nota = document.getElementById("nota").value;
+
+            jsonAlumno={"nombre":nombre,"curso":curso,"nota":nota};
+            arrayAlumnos.push(jsonAlumno);
+            console.log(arrayAlumnos);
+
+            // let datos = {
+            //     nombre: nombre,
+            //     curso: curso,
+            //     nota: nota
+            // };
+            // localStorage.setItem("datos", JSON.stringify(datos));
+        }
+
+        function visualizar(){
+            for(let i =0; i<= arrayAlumnos.length; i++){
+                document.getElementById("visualizar").innerHTML= "nombre: " + arrayAlumnos[i].nombre + "\nCurso: " + arrayAlumnos[i].curso + "\nNota: " + arrayAlumnos[i].nota;
+            }
+        //     let datos = JSON.parse(localStorage.getItem("datos"));
+        //     alert ("Nombre: " + datos.nombre + "\nCurso: " + datos.curso + "\nNota: " + datos.nota);
+        }
+    </script>
+</body>
+</html>
