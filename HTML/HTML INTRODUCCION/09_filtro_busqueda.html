@@ -3,43 +3,118 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Filtro Busqueda</title>
+        <title>Filtro Búsqueda</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #74ebd5, #acb6e5);
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                color: #333;
+            }
+
+            .container {
+                background: #ffffff;
+                padding: 40px;
+                border-radius: 15px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                width: 350px;
+            }
+
+            h1 {
+                color: #4a90e2;
+                margin-bottom: 20px;
+                font-size: 26px;
+                font-weight: bold;
+            }
+
+            input {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                transition: border-color 0.3s ease;
+            }
+
+            input:focus {
+                border-color: #4a90e2;
+                outline: none;
+            }
+
+            button {
+                background-color: #4a90e2;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                font-size: 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+
+            button:hover {
+                background-color: #357abd;
+                transform: scale(1.05);
+            }
+
+            #resultado {
+                margin-top: 20px;
+                text-align: left;
+                font-size: 16px;
+                color: #555;
+            }
+
+            #resultado h1 {
+                font-size: 18px;
+                color: #333;
+                margin: 10px 0;
+            }
+        </style>
     </head>
     <body>
-        Tématica: 
-        <input type="text" id="tematica" placeholder="Escribe la temática">
-        <br><br>
-        <button onclick="filtrar()">Filtrar</button>
-        <br><br>
-        <div id="resultado"></div>
+        <div class="container">
+            <h1>Filtro de Búsqueda</h1>
+            <label for="tematica">Temática:</label>
+            <input type="text" id="tematica" placeholder="Escribe la temática">
+            <button onclick="filtrar()">Filtrar</button>
+            <div id="resultado"></div>
+        </div>
 
         <script>
             let datos = [
-                    "deporte|www.clubrubenuria.com",
-                    "ciencia|www.abc/ciencia.com",
-                    "deporte|www.as.com",
-                    "libros|www.casadellibro.com",
-                    "cocina|www.masterchef.com",
-                    "ciencia|www.nasa.com",
+                "deporte|www.clubrubenuria.com",
+                "ciencia|www.abc/ciencia.com",
+                "deporte|www.as.com",
+                "libros|www.casadellibro.com",
+                "cocina|www.masterchef.com",
+                "ciencia|www.nasa.com",
             ];
 
-            function filtrar(){
-                let direcciones=[];
-                let tematica = document.getElementById("tematica").value;
-                
-                for(let item of datos){
-                    let trozos=item.split("|");
-                    if(trozos[0] == tematica){
-                        //si la tematica coincide con el valor del input
-                        //se añade a la lista de direcciones
+            function filtrar() {
+                let direcciones = [];
+                let tematica = document.getElementById("tematica").value.trim();
+                document.getElementById("resultado").innerHTML = ""; // Limpiar resultados previos
+
+                for (let item of datos) {
+                    let trozos = item.split("|");
+                    if (trozos[0].toLowerCase() === tematica.toLowerCase()) {
                         direcciones.push(trozos[1]);
-                        console.log(direcciones);
                     }
                 }
 
-                for(let i=0; i<direcciones.length; i++){
-                    //se añade el resultado al div resultado
-                    document.getElementById("resultado").innerHTML += `<h1>${direcciones[i]}</h1>`;
+                if (direcciones.length > 0) {
+                    for (let direccion of direcciones) {
+                        document.getElementById("resultado").innerHTML += `<h1>${direccion}</h1>`;
+                    }
+                } else {
+                    document.getElementById("resultado").innerHTML = `<h1>No se encontraron resultados</h1>`;
                 }
             }
         </script>
